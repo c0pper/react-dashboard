@@ -15,10 +15,12 @@ import {
 import Header from "../../components/Header";
 import { tokens } from "../../theme";
 import { formatDate } from "@fullcalendar/core";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const Calendar = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
+    const isNonMobile = useMediaQuery("(min-width:600px)");
     const [currentEvents, setCurrentEvents] = useState([]);
 
     const handleDateClick = (selected) => {
@@ -47,14 +49,19 @@ const Calendar = () => {
         <Box m="20px">
             <Header title="CALENDAR" subtitle="Full calendar interactive page" />
 
-            <Box display="flex" justifyContent="space-between">
+            <Box 
+                display="flex" 
+                justifyContent="space-between"
+                flexDirection={isNonMobile ? "row" : "column"} 
+            >
                 {/* CALENDAR SIDEBAR */}
                 {/* grow, shrink, percentage of width */}
                 <Box 
-                    flex="1 1 20%" 
+                    flex="1 1 20%"
                     backgroundColor={colors.primary[400]} 
                     p="15px" 
                     borderRadius="4px"
+                    mb={isNonMobile ? undefined : "20px"}
                 >
                     <Typography variant="h5">Events</Typography>
                     <List>

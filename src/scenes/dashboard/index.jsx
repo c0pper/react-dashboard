@@ -12,14 +12,22 @@ import GeographyChart from "../../components/GeographyChart";
 import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const Dashboard = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode)
+    const isNonMobile = useMediaQuery("(min-width:600px)")
 
     return (
     <Box m="20px">
-        <Box display="flex" justifyContent="space-between" alignItems="center">
+        <Box 
+            display="flex" 
+            flexDirection={isNonMobile ? "row" : "column"} 
+            justifyContent="space-between" 
+            alignItems={isNonMobile ? "center" : "left"}
+            mb={isNonMobile ? undefined : "20px"}
+        >
             <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
             <Button
                 sx={{
@@ -27,7 +35,8 @@ const Dashboard = () => {
                     color: colors.gray[100],
                     fontSize: "14px",
                     fontWeight: "bold",
-                    padding: "10px 20px"
+                    padding: "10px 20px",
+                    width: isNonMobile ? undefined : "60%"
                 }}
             >
                 <DownloadOutlinedIcon sx={{ mr: "10px" }} />
@@ -44,7 +53,7 @@ const Dashboard = () => {
         >
             {/* ROW 1 */}
             <Box 
-                gridColumn="span 3" 
+                gridColumn={isNonMobile ? "span 3" : "span 12"}
                 backgroundColor={colors.primary[400]}
                 display="flex"
                 alignItems="center"
@@ -59,7 +68,7 @@ const Dashboard = () => {
                 />
             </Box>
             <Box 
-                gridColumn="span 3" 
+                gridColumn={isNonMobile ? "span 3" : "span 12"}
                 backgroundColor={colors.primary[400]}
                 display="flex"
                 alignItems="center"
@@ -74,7 +83,7 @@ const Dashboard = () => {
                 />
             </Box>
             <Box 
-                gridColumn="span 3" 
+                gridColumn={isNonMobile ? "span 3" : "span 12"}
                 backgroundColor={colors.primary[400]}
                 display="flex"
                 alignItems="center"
@@ -89,7 +98,7 @@ const Dashboard = () => {
                 />
             </Box>
             <Box 
-                gridColumn="span 3" 
+                gridColumn={isNonMobile ? "span 3" : "span 12"}
                 backgroundColor={colors.primary[400]}
                 display="flex"
                 alignItems="center"
@@ -107,7 +116,7 @@ const Dashboard = () => {
             {/* ROW 2 */}
             {/* LINE CHART */}
             <Box 
-                gridColumn="span 8"
+                gridColumn={isNonMobile ? "span 8" : "span 12"}
                 gridRow="span 2"
                 backgroundColor={colors.primary[400]}
             >
@@ -149,7 +158,7 @@ const Dashboard = () => {
 
             {/* RECENT TRANSACTIONS */}
             <Box 
-                gridColumn="span 4"
+                gridColumn={isNonMobile ? "span 4" : "span 12"}
                 gridRow="span 2"
                 backgroundColor={colors.primary[400]}
                 overflow="auto"
@@ -201,7 +210,7 @@ const Dashboard = () => {
             {/* ROW 3 */}
             {/* CAMPAIGN */}
             <Box 
-                gridColumn="span 4"
+                gridColumn={isNonMobile ? "span 4" : "span 12"}
                 gridRow="span 2"
                 backgroundColor={colors.primary[400]}
                 p="30px"
@@ -227,7 +236,7 @@ const Dashboard = () => {
 
             {/* SALES QUANTITY */}
             <Box 
-                gridColumn="span 4"
+                gridColumn={isNonMobile ? "span 4" : "span 12"}
                 gridRow="span 2"
                 backgroundColor={colors.primary[400]}
             >
@@ -244,7 +253,7 @@ const Dashboard = () => {
 
             {/* GEO */}
             <Box 
-                gridColumn="span 4"
+                gridColumn={isNonMobile ? "span 4" : "span 12"}
                 gridRow="span 2"
                 backgroundColor={colors.primary[400]}
                 p="30px"
