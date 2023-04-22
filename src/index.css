@@ -11,8 +11,11 @@ body,
 }
 
 .app {
-  display: flex;
-  position: relative;
+  /* display: flex;
+  position: relative; */
+  display: grid;
+  grid-template-columns: auto repeat(11, 1fr); /* auto per la sidebar e il resto per il contenuto */
+  grid-template-rows: [main] auto [last-line];
 }
 
 ::-webkit-scrollbar {

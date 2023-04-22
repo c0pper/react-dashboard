@@ -24,7 +24,7 @@ function App() {
       <CssBaseline />
       <div className="app">
         <Sidebar />
-        <main className="content">
+        <main className="content" style={{gridColumn: "2 / span 11"}}>
           <Topbar />
           <Routes>
             <Route path="/" element={<Dashboard />} />
